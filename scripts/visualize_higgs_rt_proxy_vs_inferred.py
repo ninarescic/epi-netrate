@@ -35,7 +35,10 @@ def load_rt_proxy_edges(higgs_dir: Path) -> Set[Tuple[str, str]]:
             line = line.strip()
             if not line:
                 continue
-            u, v = line.split()
+            parts = line.split()
+            if len(parts) < 2:
+                continue
+            u, v = parts[0], parts[1]
             edges.add((str(u), str(v)))
     return edges
 
