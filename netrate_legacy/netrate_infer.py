@@ -71,7 +71,10 @@ def infer_targets(cascades, nodes, T_end, l1=1e-2, thr=1e-8, solver="SCS", seed=
     B_full = np.zeros((N, N), dtype=float)
 
     # Choose solver
-    solver_map = {"SCS": cp.SCS, "ECOS": cp.ECOS, "OSQP": cp.OSQP}
+    solver_map = {
+        "SCS": cp.SCS,
+        "ECOS": cp.ECOS,
+    }
     chosen_solver = solver_map.get(solver.upper(), cp.SCS)
 
     for idx_i, i in enumerate(nodes):
@@ -167,7 +170,12 @@ def main():
     ap.add_argument("--out", default="netrate_result.csv", help="Output CSV for inferred edges (src,dst,beta)")
     ap.add_argument("--save_B", default="", help="Optional path to save full B matrix (.npy or .csv)")
     ap.add_argument("--save_nodes", default="", help="Optional path to save node list (index->node_id) as CSV")
-    ap.add_argument("--solver", default="SCS", choices=["SCS", "ECOS", "OSQP"], help="Convex solver")
+    ap.add_argument(
+        "--solver",
+        default="SCS",
+        choices=["SCS", "ECOS"],
+        help="Convex solver for exponential-cone-compatible problems",
+    )
     ap.add_argument("--seed", type=int, default=0, help="Random seed for reproducibility (layout/masks)")
     args = ap.parse_args()
 
