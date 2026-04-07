@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig connectionConfig="{&quot;serverAliveInterval&quot;:300}" host="ndw-workhorse-2.adui.cs.cas.cz" id="adc02b64-b595-4ba6-ae6a-2392fadb965a" keyPath="C:\Users\rescic\.ssh\id_ninar" port="22" customName="ndw-workhorse-2" nameFormat="CUSTOM" username="nrescic" useOpenSSHConfig="true">
+        <option name="customName" value="ndw-workhorse-2" />
+      </sshConfig>
+    </configs>
+  </component>
+</project>

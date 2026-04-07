@@ -1,20 +1,27 @@
-from pathlib import Path
+from __future__ import annotations
 
-from epinet.paths import project_root
+from pathlib import Path
+import sys
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
 from epinet.baseline import infer_netrate_baseline
 
 
-def main():
-    root = project_root()
-    cascades = root / "data" / "processed" / "higgs_rt_cascades_tiny.csv"
-    out = root / "outputs" / "higgs_rt_subset_inferred.csv"
-    out.parent.mkdir(parents=True, exist_ok=True)
+def main() -> None:
+    cascades_path = ROOT / "outputs" / "higgs_rt_cascades.csv"
+    out_path = ROOT / "outputs" / "higgs_rt_inferred.csv"
 
-    if not cascades.exists():
-        raise FileNotFoundError(f"Missing {cascades}. Run scripts/make_higgs_subset_cascades.py first.")
+    infer_netrate_baseline(
+        cascades_path=cascades_path,
+        out_path=out_path,
+        params={"l1": 1e-4},
+    )
 
-    infer_netrate_baseline(cascades, out)
-    print("Done. Inferred:", out)
+
+    print("Saved inferred edges to:", out_path)
 
 
 if __name__ == "__main__":

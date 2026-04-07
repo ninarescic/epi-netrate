@@ -1,0 +1,17 @@
+README.md
+pyproject.toml
+datasets/higgs/__init__.py
+datasets/higgs/make_cascades.py
+epi_netrate.egg-info/PKG-INFO
+epi_netrate.egg-info/SOURCES.txt
+epi_netrate.egg-info/dependency_links.txt
+epi_netrate.egg-info/requires.txt
+epi_netrate.egg-info/top_level.txt
+epinet/__init__.py
+epinet/baseline.py
+epinet/datasets.py
+epinet/paths.py
+netrate_legacy/__init__.py
+netrate_legacy/netrate_infer.py
+netrate_legacy/utils_netrate.py
+netrate_legacy/visualize_netrate_vs_true.py

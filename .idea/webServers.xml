@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="7587c908-591e-47cf-a93a-bc02b4916514" name="ndw-workhorse-2">
+        <fileTransfer accessType="SFTP" host="ndw-workhorse-2.adui.cs.cas.cz" port="22" sshConfigId="adc02b64-b595-4ba6-ae6a-2392fadb965a" sshConfig="ndw-workhorse-2" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

@@ -1,0 +1,14 @@
+Metadata-Version: 2.4
+Name: epi-netrate
+Version: 0.1.0
+Summary: NetRate-style diffusion network inference utilities
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: scipy
+Requires-Dist: networkx
+Requires-Dist: matplotlib
+Requires-Dist: tqdm
+Requires-Dist: pyyaml
+Requires-Dist: cvxpy
