@@ -11,13 +11,18 @@ from epinet.baseline import infer_netrate_baseline
 
 
 def main() -> None:
-    cascades_path = ROOT / "outputs" / "higgs_rt_cascades.csv"
-    out_path = ROOT / "outputs" / "higgs_rt_inferred.csv"
+    cascades_path = ROOT / "outputs" / "higgs_rt_cascades_21_50_top50.csv"
+    out_path = ROOT / "outputs" / "higgs_rt_inferred_21_50_top50.csv"
 
     infer_netrate_baseline(
         cascades_path=cascades_path,
         out_path=out_path,
-        params={"l1": 1e-4},
+        params={
+            "matlab_faithful": True,
+            "horizon": 10.0,
+            "type_diffusion": "exp",
+            "thr": 1e-8,
+        },
     )
 
 

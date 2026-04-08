@@ -18,11 +18,11 @@ from datasets.higgs.ground_truth import get_truth_edges
 # CONFIG: edit these values
 # =========================
 
-TRUTH_TYPE = "social_1hop"
+TRUTH_TYPE = ("social_2hop")
 REVERSE_TRUTH = True
 TOP_K_MAX = 2000
 
-INFERRED_PATH = ROOT / "outputs" / "higgs_rt_subset_inferred.csv"
+INFERRED_PATH = ROOT / "outputs" / "higgs_rt_inferred_21_50_top50.csv"
 HIGGS_DIR = ROOT / "data" / "higgs"
 
 

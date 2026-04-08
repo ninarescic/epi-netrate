@@ -127,7 +127,7 @@ if __name__ == "__main__":
     out_dir.mkdir(parents=True, exist_ok=True)
 
     configs = [
-        ("higgs_rt_cascades.csv", {"RT"}),
+        ("higgs_rt_cascades_all.csv", {"RT"}),
         ("higgs_rt_re_cascades.csv", {"RT", "RE"}),
         ("higgs_rt_mt_cascades.csv", {"RT", "MT"}),
         ("higgs_rt_re_mt_cascades.csv", {"RT", "RE", "MT"}),
@@ -139,7 +139,7 @@ if __name__ == "__main__":
             higgs_dir=higgs_dir,
             out_csv=out_csv,
             min_cascade_size=10,
-            max_cascades=20,
+            max_cascades=None,
             allowed_kinds=allowed_kinds,
         )
         print(f"Saved {sorted(allowed_kinds)} cascades to: {out}")

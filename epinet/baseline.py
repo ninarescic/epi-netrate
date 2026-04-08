@@ -8,11 +8,14 @@ _SUPPORTED_PARAMS = {
     "l1",
     "thr",
     "topk",
-    "no_self_loops",
-    "save_B",
-    "save_nodes",
     "solver",
     "seed",
+    "save_B",
+    "save_nodes",
+    "no_self_loops",
+    "matlab_faithful",
+    "horizon",
+    "type_diffusion",
 }
 
 
@@ -48,7 +51,7 @@ def infer_netrate_baseline(
     argv += ["--out", out_path]
 
     for k, v in params.items():
-        flag = f"--{k.replace('_', '-')}"
+        flag = f"--{k}"
         if isinstance(v, bool):
             if v:
                 argv.append(flag)
