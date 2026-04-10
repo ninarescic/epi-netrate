@@ -67,12 +67,25 @@ def build_matlab_stats(cascades, nodes, horizon: float, diffusion: str):
     A_bad = np.zeros((N, N), dtype=float)
     num_cascades = np.zeros(N, dtype=int)
 
+    print("A_potential sum =", A_potential.sum())
+    print("A_potential max =", A_potential.max())
+    print("A_bad sum =", A_bad.sum())
+    print("A_bad max =", A_bad.max())
+    print("A_bad nonzero =", (A_bad != 0).sum())
+    print("num infected targets =", (num_cascades > 0).sum())
+
     infected_events_by_target = {i: [] for i in range(N)}
 
     for cid, times in cascades.items():
         items = sorted(times.items(), key=lambda kv: kv[1])
+
+        # print("DEBUG cid =", cid, "len(items) =", len(items), "sample =", items[:5])
         idx_ord = [node_index[n] for n, _ in items]
         val = [float(t) for _, t in items]
+
+        # print("DEBUG idx_ord len =", len(idx_ord), "sample =", idx_ord[:10])
+        # print("DEBUG val len =", len(val), "sample =", val[:10])
+
         infected_set = set(idx_ord)
 
         # infected target contributions and predecessor info
@@ -213,6 +226,28 @@ def main():
 
     cascades, nodes = load_cascades(Path(args.cascades))
 
+    print("loaded nodes =", len(nodes))
+    print("loaded cascades =", len(cascades))
+
+    loaded_sizes = sorted((len(v) for v in cascades.values()), reverse=True)
+    print("largest loaded cascade sizes =", loaded_sizes[:10])
+    print("num loaded cascades with size >= 2 =", sum(x >= 2 for x in loaded_sizes))
+    print("num loaded cascades with size >= 3 =", sum(x >= 3 for x in loaded_sizes))
+
+    first_cid = next(iter(cascades))
+    print("first loaded cascade id =", first_cid)
+    print("first loaded cascade sample =", list(cascades[first_cid].items())[:10])
+    print("first 10 nodes =", nodes[:10])
+
+    print("matlab_faithful =", args.matlab_faithful)
+    print("horizon =", args.horizon)
+    print("type_diffusion =", args.type_diffusion)
+
+    if args.matlab_faithful:
+        print("RUNNING MATLAB-FAITHFUL PATH")
+    else:
+        print("RUNNING LEGACY SURROGATE PATH")
+
     if args.matlab_faithful:
         if args.horizon is None:
             raise ValueError("--horizon is required in --matlab_faithful mode")
@@ -240,6 +275,8 @@ def main():
             seed=args.seed,
             verbose=True,
         )
+
+
 
     if not edges:
         print("No edges inferred.")

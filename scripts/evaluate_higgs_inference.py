@@ -18,18 +18,17 @@ from datasets.higgs.ground_truth import get_truth_edges
 # CONFIG: edit these values
 # =========================
 
-TRUTH_TYPE = ("social_2hop")
+TRUTH_TYPE = ("social_1hop")
 REVERSE_TRUTH = True
 TOP_K_MAX = 2000
 
-INFERRED_PATH = ROOT / "outputs" / "higgs_rt_inferred_21_50_top50.csv"
+INFERRED_PATH = ROOT / "outputs" / "higgs_rt_inferred_21_50_top50_10T.csv"
 HIGGS_DIR = ROOT / "data" / "higgs"
 
 
 # =========================
 # Helpers
 # =========================
-
 def detect_columns(df: pd.DataFrame) -> tuple[str, str, str]:
     """
     Try to detect source, destination, and weight columns in inferred edge CSV.
